@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+
+  <script type="text/javascript" charset="utf-8">
+    (function (g, e, n, es, ys) {
+      g['_genesysJs'] = e;
+      g[e] = g[e] ||
+        function () {
+          (g[e].q = g[e].q || []).push(arguments);
+        };
+      g[e].t = 1 * new Date();
+      g[e].c = es;
+      ys = document.createElement('script');
+      ys.async = 1;
+      ys.src = n;
+      ys.charset = 'utf-8';
+      document.head.appendChild(ys);
+    })(
+      window,
+      'Genesys',
+      'https://apps.inindca.com/genesys-bootstrap/genesys.min.js',
+      {
+  environment: 'prod-euc1',
+    deploymentId: 'fccd731d-b09a-4e33-9f02-2a59b051e0a2',
+        debug: true
+      }
+    );
+
+    function openMessenger() {
+      Genesys("command", "Messenger.open");
+    }
+
+
+
+    /** You can subscribe to Messenger.ready event or Launcher.ready event **/
+    Genesys("subscribe", "Messenger.ready", function() {
+      document.getElementById("messenger_btn").style.display = "block";
+    });
+  </script>
+
+</head>
+<body>
+  <button type="button" id="messenger_btn"  onclick="openMessenger()">Launch Messenger</button>
+</body>
+</html>
