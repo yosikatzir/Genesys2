@@ -35,7 +35,18 @@
       Genesys("command", "Messenger.open");
     }
 
-
+    /** Subscribe to Database.ready event before calling its command.**/
+    Genesys("subscribe", "Database.ready", function() {
+      // Set the data in the Database plugin. This data will automatically be included along when sending actual messages.
+      Genesys("command", "Database.set", {
+        messaging: {
+          customAttributes: {
+            name: "testing",
+            account: "534423"
+          }
+        }
+      })
+    });
 
     /** You can subscribe to Messenger.ready event or Launcher.ready event **/
     Genesys("subscribe", "Messenger.ready", function() {
