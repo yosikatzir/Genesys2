@@ -5,10 +5,10 @@ document.getElementById('transcriptionForm').addEventListener('submit', function
 
     const formData = new FormData();
     formData.append('audio', fileInput);
-    formdata.append("model", "whisper-1");
-    formdata.append("response_format", "json");
-    formdata.append("temperature", "0");
-    formdata.append("language", "en");
+    formData.append("model", "whisper-1");
+    formData.append("response_format", "json");
+    formData.append("temperature", "0");
+    formData.append("language", "en");
 
     fetch('https://api.openai.com/v1/audio/transcriptions', {
         method: 'POST',
