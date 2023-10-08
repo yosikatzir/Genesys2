@@ -14,7 +14,7 @@ document.getElementById('transcriptionForm').addEventListener('submit', function
         method: 'POST',
         body: formData,
         headers: {
-            'Authorization': 'Bearer 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'
+            'Authorization': 'Bearer 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'
         }
     })
     .then(response => response.json())
