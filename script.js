@@ -1,12 +1,10 @@
-document.getElementById('whisperForm').addEventListener('submit', function(event) {
+document.getElementById('transcriptionForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const textInput = document.getElementById('textInput').value;
     const fileInput = document.getElementById('fileInput').files[0];
 
     const formData = new FormData();
-    formData.append('text', textInput);
-    formData.append('file', fileInput);
+    formData.append('audio', fileInput);
 
     fetch('https://api.openai.com/v1/audio/transcriptions', {
         method: 'POST',
@@ -18,7 +16,7 @@ document.getElementById('whisperForm').addEventListener('submit', function(event
     .then(response => response.json())
     .then(data => {
         const outputDiv = document.getElementById('output');
-        outputDiv.innerHTML = `<h2>Whisper API Response:</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
+        outputDiv.innerHTML = `<h2>Transcription Result:</h2><p>${data.text}</p>`;
     })
     .catch(error => console.error('Error:', error));
 });
