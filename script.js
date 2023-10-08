@@ -8,7 +8,7 @@ document.getElementById('transcriptionForm').addEventListener('submit', function
     formdata.append("model", "whisper-1");
     formdata.append("response_format", "json");
     formdata.append("temperature", "0");
-    formdata.append("language", "en")
+    formdata.append("language", "en");
 
     fetch('https://api.openai.com/v1/audio/transcriptions', {
         method: 'POST',
