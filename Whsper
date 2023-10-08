@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Whisper API</title>
+</head>
+<body>
+    <h1>Call Whisper API</h1>
+    <button onclick="callWhisperAPI()">Call Whisper API</button>
+
+    <script>
+        function callWhisperAPI() {
+            const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
+            const apiUrl = 'https://api.whisper.ai/endpoint'; // Replace with the actual Whisper API endpoint
+            
+            const formData = new FormData();
+            formData.append('audio', document.getElementById('audioFile').files[0]);
+            
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
